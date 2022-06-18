@@ -226,6 +226,7 @@ export default class LinkedList {
     }
     return listArray.join('-> ');
   }
+
   /**
    * @Title {Print nodes list with next pointer}
    * 
@@ -237,6 +238,49 @@ export default class LinkedList {
       currentNode = currentNode.next;
     }
   }
+
+  /**
+   * @Title {Reserve linked list}
+   * 
+   */
+  reserve() {
+    // 20->2->3->4->5
+    // 5->4->3->2->20
+    if (this.head === null) return;
+
+    let currentNode = this.head,
+      previousNode = null,
+      nextNode = null;
+
+    while (currentNode) {
+      nextNode = currentNode.next;
+      currentNode.next = previousNode;
+
+      previousNode = currentNode;
+      currentNode = nextNode;
+
+      nextNode = null;
+    }
+    this.head = previousNode;
+
+    return this.head;
+  }
+
+  /**
+   * @Title {Reserve linked list using recursion}
+   * 
+   */
+  recursiveReserve(head) {
+    if (head === null || head.next === null) return head;
+
+    let reservedHead = this.recursiveReserve(head.next);
+
+    head.next.next = head;
+    head.next = null;
+
+    return reservedHead;
+  }
+
 }
 
 const dataList = new LinkedList(20);
@@ -246,3 +290,7 @@ dataList.append(4);
 dataList.append(5);
 
 console.log(dataList.getNthElement(4));
+console.log(dataList.printList());
+dataList.reserve();
+// dataList.recursiveReserve(dataList.head);
+console.log(dataList.printList());
