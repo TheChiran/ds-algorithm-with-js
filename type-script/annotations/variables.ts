@@ -1,6 +1,5 @@
-import { CaaRecord } from "dns";
-
 let apples: number = 5;
+
 let speed: string = 'fast';
 let hasName: boolean = true;
 
@@ -31,3 +30,5 @@ let point: {x: number;y: number;}={
 const logNumber = (i: number)=>{
   console.log(i)
 }
+
+let foundWord:boolean;

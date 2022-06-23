@@ -101,3 +101,9 @@ function addItems(n) {
 // shift(remove first item)/unshift(add at first) -> O (n) -> as needs re indexing
 // splice (1,0,'Hi') -> O(n)
 // find -> search by value -> O(n), search by index-> O(1)
+
+// Big O of objects
+// insertion - O(1)
+// remove - O(1)
+// search - O(n)
+// access - O(1)
